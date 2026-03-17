@@ -1,0 +1,26 @@
+{
+  "name": "@openclaw/agri-orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Native OpenClaw agriculture and horticulture operations plugin",
+  "type": "module",
+  "scripts": {
+    "demo:init": "node ./scripts/init-demo.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "0.34.48",
+    "openclaw": "2026.3.13"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

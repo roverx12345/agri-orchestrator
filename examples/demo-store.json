@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-17T12:00:00.000Z",
+  "productionUnits": [
+    {
+      "id": "unit_hyacinth_container",
+      "name": "Balcony Hyacinth Pot",
+      "kind": "container",
+      "location": "east balcony",
+      "notes": "single decorative bulb container",
+      "createdAt": "2026-03-17T08:00:00.000Z",
+      "updatedAt": "2026-03-17T08:00:00.000Z"
+    },
+    {
+      "id": "unit_corn_field",
+      "name": "North Corn Block",
+      "kind": "field",
+      "location": "north field",
+      "notes": "demo corn field",
+      "createdAt": "2026-03-17T08:05:00.000Z",
+      "updatedAt": "2026-03-17T08:05:00.000Z"
+    },
+    {
+      "id": "unit_wheat_field",
+      "name": "South Wheat Block",
+      "kind": "field",
+      "location": "south field",
+      "notes": "demo wheat field",
+      "createdAt": "2026-03-17T08:10:00.000Z",
+      "updatedAt": "2026-03-17T08:10:00.000Z"
+    }
+  ],
+  "cropPlans": [
+    {
+      "id": "plan_hyacinth_container",
+      "unitId": "unit_hyacinth_container",
+      "crop": "hyacinth",
+      "cultivar": "Delft Blue",
+      "currentStage": "flowering",
+      "createdAt": "2026-03-17T08:15:00.000Z",
+      "updatedAt": "2026-03-17T08:15:00.000Z"
+    },
+    {
+      "id": "plan_corn_field",
+      "unitId": "unit_corn_field",
+      "crop": "corn",
+      "currentStage": "tasseling",
+      "targetYield": "12 t/ha",
+      "createdAt": "2026-03-17T08:20:00.000Z",
+      "updatedAt": "2026-03-17T08:20:00.000Z"
+    },
+    {
+      "id": "plan_wheat_field",
+      "unitId": "unit_wheat_field",
+      "crop": "wheat",
+      "currentStage": "heading",
+      "createdAt": "2026-03-17T08:25:00.000Z",
+      "updatedAt": "2026-03-17T08:25:00.000Z"
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs_hyacinth_moisture",
+      "cropPlanId": "plan_hyacinth_container",
+      "unitId": "unit_hyacinth_container",
+      "type": "soil_moisture",
+      "observedAt": "2026-03-17T09:00:00.000Z",
+      "summary": "Moisture is adequate",
+      "data": {
+        "status": "adequate"
+      },
+      "createdAt": "2026-03-17T09:00:00.000Z"
+    },
+    {
+      "id": "obs_corn_moisture",
+      "cropPlanId": "plan_corn_field",
+      "unitId": "unit_corn_field",
+      "type": "soil_moisture",
+      "observedAt": "2026-03-17T09:10:00.000Z",
+      "summary": "Topsoil is dry",
+      "data": {
+        "status": "dry"
+      },
+      "createdAt": "2026-03-17T09:10:00.000Z"
+    },
+    {
+      "id": "obs_corn_soil_test",
+      "cropPlanId": "plan_corn_field",
+      "unitId": "unit_corn_field",
+      "type": "soil_test",
+      "observedAt": "2026-03-01T09:00:00.000Z",
+      "summary": "Nitrogen status low",
+      "data": {
+        "interpretation": "low nitrogen"
+      },
+      "createdAt": "2026-03-01T09:00:00.000Z"
+    },
+    {
+      "id": "obs_wheat_phenology",
+      "cropPlanId": "plan_wheat_field",
+      "unitId": "unit_wheat_field",
+      "type": "phenology",
+      "observedAt": "2026-03-16T10:00:00.000Z",
+      "summary": "Main stems are heading",
+      "createdAt": "2026-03-16T10:00:00.000Z"
+    }
+  ],
+  "operations": [
+    {
+      "id": "op_wheat_irrigation",
+      "cropPlanId": "plan_wheat_field",
+      "unitId": "unit_wheat_field",
+      "type": "irrigation",
+      "performedAt": "2026-03-14T07:00:00.000Z",
+      "summary": "Supplemental irrigation applied",
+      "confirmed": true,
+      "createdAt": "2026-03-14T07:00:00.000Z"
+    }
+  ],
+  "recommendations": []
+}
+
