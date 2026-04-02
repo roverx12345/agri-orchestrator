@@ -271,6 +271,66 @@ If a harvest really happened, log it explicitly:
 
 Without `confirmed=true`, this will be blocked.
 
+## Practical OpenClaw TUI and Feishu examples
+
+The same natural-language prompts can be used in OpenClaw TUI or in a Feishu chat that is wired to the OpenClaw gateway.
+
+### Tested field registration flow
+
+This flow was re-tested with a Chinese field location and crop plan:
+
+```text
+Please use the agri-orchestrator tools to create a field profile:
+name "曲周小麦试验田B", kind field, location "河北邯郸曲周",
+crop wheat, cultivar 济麦22, current stage heading.
+Then record three observations:
+1) today's soil_moisture is adequate;
+2) latest soil_test shows low nitrogen;
+3) today's pest_scout is low with no obvious disease or insect damage.
+Reply only with "已完成".
+```
+
+Expected behavior:
+
+- the plugin creates the unit and crop plan
+- if the unit has only Chinese location text, it attempts geocoding automatically
+- if geocoding succeeds, it backfills `latitude` / `longitude`
+- if geocoding still fails, the assistant should ask for a more standard address or manual coordinates
+
+### Tested risk question that does not mention weather explicitly
+
+After weather sync or prompt-time refresh is available, the following style of prompt should still use tomorrow forecast context:
+
+```text
+请直接告诉我曲周小麦试验田B今天的主要风险，并给出处理优先级。不要先问我补充信息，直接基于现有档案回答。
+```
+
+Expected behavior:
+
+- the model can cite tomorrow weather context even when the user did not explicitly ask about weather
+- risk ranking should combine agronomy records and tomorrow forecast
+- the weather line comes from the native plugin prompt summary, not from the user manually typing weather
+
+### Feishu-friendly message examples
+
+Use messages like these directly in the Feishu OpenClaw chat:
+
+```text
+请帮我新建一个农田档案：名称“曲周小麦试验田B”，类型 field，位置“河北邯郸曲周”，作物 wheat，品种 济麦22，当前阶段 heading。
+```
+
+```text
+请帮我记录三条观察到曲周小麦试验田B：1）今天 soil_moisture 为 adequate；2）最新 soil_test 显示 low nitrogen；3）今天 pest_scout 为 low，没有明显病虫害。
+```
+
+```text
+请告诉我曲周小麦试验田B今天的主要风险和今日建议。
+```
+
+```text
+请告诉我曲周小麦试验田B明天是否有天气相关风险，并说明今天该提前做什么。
+```
+
 ## Cron example
 
 Current OpenClaw exposes cron as a Gateway capability, not as a plugin-side `registerCron(...)` API. The recommended MVP pattern is to let OpenClaw cron trigger a dedicated agent turn that uses this plugin’s tools.
