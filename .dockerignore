@@ -1,0 +1,10 @@
+node_modules
+.git
+.runtime-storage
+coverage
+*.log
+.env
+.env.*
+!.env.example
+!.env.production.example
+dist

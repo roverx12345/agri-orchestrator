@@ -1,0 +1,39 @@
+{
+  "name": "@openclaw/agri-orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Native OpenClaw agriculture and horticulture operations plugin",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "care:check": "node ./scripts/run-care-check.mjs",
+    "cron:print": "node ./scripts/print-cron-template.mjs",
+    "demo:init": "node ./scripts/init-demo.mjs",
+    "demo:hyacinth:init": "node ./scripts/init-hyacinth-demo.mjs",
+    "weather:sync": "node ./scripts/sync-weather.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json",
+    "backend:start": "node ./dist/src/backend/server.js",
+    "worker:start": "node ./dist/src/backend/worker.js",
+    "db:migrate": "node ./dist/src/backend/db/migrate.js",
+    "backend:seed": "node ./dist/src/backend/scripts/seed-demo.js"
+  },
+  "dependencies": {
+    "@fastify/multipart": "^9.4.0",
+    "@sinclair/typebox": "0.34.48",
+    "fastify": "^5.8.2",
+    "openclaw": "^2026.3.23-2",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@types/pg": "^8.18.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  }
+}

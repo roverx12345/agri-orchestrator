@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-17T12:00:00.000Z",
+  "productionUnits": [
+    {
+      "id": "unit_hyacinth_container",
+      "name": "Balcony Hyacinth Pot",
+      "kind": "container",
+      "location": "east balcony",
+      "notes": "single decorative bulb container for MVP testing",
+      "createdAt": "2026-03-17T08:00:00.000Z",
+      "updatedAt": "2026-03-17T08:00:00.000Z"
+    }
+  ],
+  "cropPlans": [
+    {
+      "id": "plan_hyacinth_container",
+      "unitId": "unit_hyacinth_container",
+      "crop": "hyacinth",
+      "cultivar": "Delft Blue",
+      "currentStage": "flowering",
+      "rulesetVersion": "hyacinth@0.1.0",
+      "createdAt": "2026-03-17T08:15:00.000Z",
+      "updatedAt": "2026-03-17T08:15:00.000Z"
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs_hyacinth_phenology",
+      "cropPlanId": "plan_hyacinth_container",
+      "unitId": "unit_hyacinth_container",
+      "type": "phenology",
+      "observedAt": "2026-03-17T08:30:00.000Z",
+      "summary": "Plants are in open bloom",
+      "source": "manual",
+      "qualityFlag": "ok",
+      "createdAt": "2026-03-17T08:30:00.000Z"
+    },
+    {
+      "id": "obs_hyacinth_moisture",
+      "cropPlanId": "plan_hyacinth_container",
+      "unitId": "unit_hyacinth_container",
+      "type": "soil_moisture",
+      "observedAt": "2026-03-17T09:00:00.000Z",
+      "summary": "Moisture is adequate",
+      "source": "manual",
+      "qualityFlag": "ok",
+      "data": {
+        "status": "adequate"
+      },
+      "createdAt": "2026-03-17T09:00:00.000Z"
+    }
+  ],
+  "operations": [
+    {
+      "id": "op_hyacinth_irrigation",
+      "cropPlanId": "plan_hyacinth_container",
+      "unitId": "unit_hyacinth_container",
+      "type": "irrigation",
+      "performedAt": "2026-03-16T07:00:00.000Z",
+      "summary": "Light watering to keep substrate evenly moist",
+      "confirmed": true,
+      "amount": 0.3,
+      "unit": "L",
+      "createdAt": "2026-03-16T07:00:00.000Z"
+    }
+  ],
+  "recommendations": []
+}

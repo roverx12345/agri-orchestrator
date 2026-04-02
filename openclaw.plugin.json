@@ -1,0 +1,44 @@
+{
+  "id": "agri-orchestrator",
+  "name": "Agri Orchestrator",
+  "description": "Structured agriculture and horticulture operations plugin for production units, crop plans, observations, operations, and daily care checks.",
+  "skills": ["./skills"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enablePromptHook": {
+        "type": "boolean",
+        "default": true
+      },
+      "enableIngestRoute": {
+        "type": "boolean",
+        "default": true
+      },
+      "enableWeatherContext": {
+        "type": "boolean",
+        "default": true
+      },
+      "autoRefreshWeatherContext": {
+        "type": "boolean",
+        "default": true
+      },
+      "enableRegisterLocationLookup": {
+        "type": "boolean",
+        "default": true
+      },
+      "promptSummaryLimit": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 10,
+        "default": 3
+      },
+      "weatherRefreshAfterHours": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 48,
+        "default": 18
+      }
+    }
+  }
+}

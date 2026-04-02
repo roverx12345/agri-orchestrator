@@ -1,0 +1,21 @@
+{
+  auto_https off
+}
+
+{$CADDY_SITE_ADDRESS:80} {
+  encode gzip zstd
+
+  @health path /health
+
+  handle @health {
+    reverse_proxy api:{$BACKEND_PORT:3045}
+  }
+
+  handle_path /api/* {
+    reverse_proxy api:{$BACKEND_PORT:3045}
+  }
+
+  handle {
+    respond "Seedflower API proxy is running.\n" 200
+  }
+}
