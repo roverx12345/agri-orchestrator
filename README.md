@@ -73,43 +73,66 @@ This plugin ships its own skill and declares it with the current manifest shape:
 }
 ```
 
-That declaration already exists in [openclaw.plugin.json](/Users/roverx/Documents/app/agri-orchestrator/openclaw.plugin.json), and the shipped skill lives at [skills/agri-orchestrator/SKILL.md](/Users/roverx/Documents/app/agri-orchestrator/skills/agri-orchestrator/SKILL.md).
+That declaration already exists in `openclaw.plugin.json`, and the shipped skill lives at `skills/agri-orchestrator/SKILL.md`.
 
 ## Install
 
-1. Install local dependencies:
+Prerequisites:
+
+- Node.js 22+
+- npm
+- OpenClaw 2026.3.23-2 or newer
+
+Recommended install flow from the repo root:
 
 ```bash
 npm install
+npm run typecheck
+npm test
+npm run build
+./scripts/install-openclaw-plugin.sh
 ```
 
-2. Install the plugin into OpenClaw from the local path:
+What the install script does:
+
+- builds `dist/`
+- installs the plugin from the current local path if needed
+- enables the plugin if it is not already enabled
+- prints `openclaw plugins info agri-orchestrator`
+
+If you prefer to do it manually:
 
 ```bash
-openclaw plugins install -l /Users/roverx/Documents/app/agri-orchestrator
-```
-
-3. Enable it:
-
-```bash
+npm run build
+openclaw plugins install -l "$(pwd)"
 openclaw plugins enable agri-orchestrator
-```
-
-4. Verify the plugin is visible:
-
-```bash
 openclaw plugins info agri-orchestrator
 ```
 
 ## Minimal debug workflow
 
-Use these commands while iterating:
+Validated local iteration flow:
 
 ```bash
 npm run typecheck
 npm test
+npm run build
 openclaw plugins info agri-orchestrator
 ```
+
+If you changed plugin source and the host is already running, rebuild and then restart the OpenClaw gateway before retesting:
+
+```bash
+npm run build
+./scripts/run-openclaw-gateway.sh
+```
+
+The install/debug commands above were re-checked locally in this repo:
+
+- `npm run typecheck`
+- `npm test`
+- `npm run build`
+- `./scripts/install-openclaw-plugin.sh`
 
 If the plugin loads but a tool is not behaving as expected, inspect:
 
@@ -120,8 +143,8 @@ If the plugin loads but a tool is not behaving as expected, inspect:
 
 This repo includes both a demo data file and a script:
 
-- [examples/demo-store.json](/Users/roverx/Documents/app/agri-orchestrator/examples/demo-store.json)
-- [scripts/init-demo.mjs](/Users/roverx/Documents/app/agri-orchestrator/scripts/init-demo.mjs)
+- `examples/demo-store.json`
+- `scripts/init-demo.mjs`
 
 The demo initializes:
 

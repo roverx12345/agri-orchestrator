@@ -61,6 +61,51 @@ OpenClaw 会自动调用这个插件背后的工具来完成记录。
 
 这是为了避免把错误记录写进正式数据里。
 
+## 本地安装和调试
+
+如果你是开发者，或者准备自己在本机调试这个插件，推荐在仓库根目录按下面顺序执行：
+
+```bash
+npm install
+npm run typecheck
+npm test
+npm run build
+./scripts/install-openclaw-plugin.sh
+```
+
+这套流程我已经在本地重新验证过，当前是可行的。它会：
+
+- 安装依赖
+- 跑类型检查和测试
+- 生成 `dist/`
+- 把当前目录链接安装到 OpenClaw
+- 自动打印插件状态
+
+如果你想手动安装，也可以这样做：
+
+```bash
+npm run build
+openclaw plugins install -l "$(pwd)"
+openclaw plugins enable agri-orchestrator
+openclaw plugins info agri-orchestrator
+```
+
+日常调试最常用的命令是：
+
+```bash
+npm run typecheck
+npm test
+npm run build
+openclaw plugins info agri-orchestrator
+```
+
+如果你改了插件源码，而 OpenClaw gateway 已经在运行，建议重建后再重启 gateway 再测：
+
+```bash
+npm run build
+./scripts/run-openclaw-gateway.sh
+```
+
 ## 第一次使用：推荐顺序
 
 如果你第一次用，建议按下面顺序来：
